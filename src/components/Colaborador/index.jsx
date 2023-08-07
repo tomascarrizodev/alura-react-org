@@ -1,0 +1,30 @@
+import './Colaborador.css';
+import { AiFillCloseCircle, AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+
+const Colaborador = ({ colaborador, color, eliminarColaborador, favColaborador }) => {
+    const { nombre, foto, puesto, id, fav } = colaborador;
+    
+    const styleEncabezado = {
+        backgroundColor: color
+    }
+
+    return (
+        <div className='colaborador'>
+            <AiFillCloseCircle className='eliminar' onClick={ () => eliminarColaborador(id) } />
+            <div className='encabezado' style={ styleEncabezado }>
+                <img src={ foto } alt={ nombre } />
+            </div>
+            <div className='info'>
+                <h4>{ nombre }</h4>
+                <h5>{ puesto }</h5>
+                { 
+                    fav ? 
+                        <AiFillHeart color='red' onClick={() => favColaborador(id)} /> :
+                        <AiOutlineHeart onClick={() => favColaborador(id)} />
+                }
+            </div>
+        </div>
+    )
+}
+
+export default Colaborador;
